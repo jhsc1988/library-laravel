@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="icon" href="images/favicon.ico"/>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="icon" href="images/favicon.ico"/>
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,62 +17,68 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
-
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <title>Knjižnica - laravel</title>
 </head>
-<body class="mb-48">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light c-navbar">
-    <a class="navbar-brand" href="#">Knjižnica</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-
-            <li class="nav-item active ml-auto">
-                <a class="nav-link mr-2" href="#">Početna <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">Menu1</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">Menu2</a>
-            </li>
-
-        </ul>
-
-        <ul class="navbar-nav ml-auto order-lg-last">
-
-            <li class="nav-item">
-                <a href="/register" class="nav-link hover:text-laravel"><i class="fa-solid fa-user-plus"></i>
-                    Register</a>
-            </li>
-
-            <li class="nav-item">
-                <a href="/login" class="nav-link hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Login</a>
-            </li>
-
-        </ul>
-
+<body class="m-width-500">
+<nav class="flex items-center justify-between flex-wrap p-2 bg-nav">
+    <div class="flex items-center flex-shrink-0  mr-6 nav">
+        <a class="text-lg font-bold nav" href="/">Knjižnica</a>
+    </div>
+    <div class="block lg:hidden">
+        <button id="menu-toggle"
+                class="flex items-center px-3 py-2 border rounded text-black-200 border-black-400 hover:text-red hover:border-red">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+            </svg>
+        </button>
+    </div>
+    <div id="menu" class="w-full hidden flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow nav">
+            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Katalog
+            </a>
+            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Menu 1
+            </a>
+            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0">
+                Menu 2
+            </a>
+        </div>
+        <div class="nav">
+            <a href="/register" class="block mt-4 lg:inline-block lg:mt-0">
+                <i class="fa-solid fa-user-plus"></i>
+                Registracija
+            </a>
+            <a href="/login" class="block mt-4 lg:inline-block lg:mt-0">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                Prijava
+            </a>
+        </div>
     </div>
 </nav>
 
+<div class="module-border-wrap-nav"></div>
 <main>
     {{$slot}}
 </main>
 
-<footer class="fixed-bottom w-full flex items-center justify-start font-bold bg-light c-foot" id="f1">
-    <p>© 2023 Jasmin Husić</p>
+<footer class="footer bg-nav">
+    <div class="module-border-wrap-nav"></div>
+    <div class="copyright">
+        © 2023 Jasmin Husić
+    </div>
 </footer>
+<div class="m-bottom-80"></div>
 </body>
 </html>
+
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("hidden");
+    });
+</script>
