@@ -64,7 +64,7 @@
             <div class="mb-6">
                 <label
                     for="password"
-                    class="inline-block">Password
+                    class="inline-block">Lozinka
                 </label>
                 <label>
                     <input
@@ -83,7 +83,7 @@
             <div class="mb-6">
                 <label
                     for="password2"
-                    class="inline-block">Confirm Password
+                    class="inline-block">Potvrdi lozinku
                 </label>
                 <label>
                     <input
