@@ -50,14 +50,10 @@
         </div>
         <div class="nav">
             @auth
-
                 <span class="font-bold">
-                Pozdrav {{auth()->user()->name}},
+                Pozdrav {{auth()->user()->name}} <?php if (auth()->user()->isAdmin()) echo('(Admin)') ?>
             </span>
-
-
                 <a href="/listings/manage" class="hover:text-laravel"><i class="fa fa-gear fa-spin"></i> Sve posudbe</a>
-
                 <form class="inline" method="post" action="/logout">
                     @csrf
                     <button type="submit" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
@@ -89,8 +85,9 @@
     <div class="copyright">
         © 2023 Jasmin Husić
     </div>
-</footer>
+</footer><x-flash-message/>
 <div class="m-bottom-80"></div>
+
 </body>
 </html>
 
