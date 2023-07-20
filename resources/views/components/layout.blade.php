@@ -49,14 +49,32 @@
             </a>
         </div>
         <div class="nav">
-            <a href="/register" class="block mt-4 lg:inline-block lg:mt-0">
-                <i class="fa-solid fa-user-plus"></i>
-                Registracija
-            </a>
-            <a href="/login" class="block mt-4 lg:inline-block lg:mt-0">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                Prijava
-            </a>
+            @auth
+
+                <span class="font-bold">
+                Pozdrav {{auth()->user()->name}},
+            </span>
+
+
+                <a href="/listings/manage" class="hover:text-laravel"><i class="fa fa-gear fa-spin"></i> Sve posudbe</a>
+
+                <form class="inline" method="post" action="/logout">
+                    @csrf
+                    <button type="submit" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                        <i class="fa-solid fa-door-closed"></i> Odjava
+                    </button>
+                </form>
+
+            @else
+                <a href="/register" class="block mt-4 lg:inline-block lg:mt-0">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Registracija
+                </a>
+                <a href="/login" class="block mt-4 lg:inline-block lg:mt-0">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Prijava
+                </a>
+            @endauth
         </div>
     </div>
 </nav>

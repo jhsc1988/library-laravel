@@ -95,6 +95,7 @@
     paddin: 0;
 }
 
+.nav button,
 .nav a {
     padding: .5em .8em;
     color: rgb(0, 0, 0);
@@ -104,6 +105,8 @@
     font-weight: bold;
 }
 
+.nav button::before,
+.nav button::after,
 .nav a::before,
 .nav a::after {
     content: '';
@@ -114,6 +117,7 @@
     opacity: 0;
 }
 
+.nav button::before,
 .nav a::before {
     content: '';
     right: 0;
@@ -123,6 +127,7 @@
     transform: translate(-100%, 50%);
 }
 
+.nav button::after,
 .nav a:after {
     content: '';
     right: 0;
@@ -132,12 +137,15 @@
     /*transform: translate(100%, 50%)*/
 }
 
+.nav button:hover:before,
+.nav button:hover:after,
 .nav a:hover:before,
 .nav a:hover:after {
     transform: translate(0, 0);
     opacity: 1;
 }
 
+.nav button:hover,
 .nav a:hover {
     color: #d90d0d;
 }
