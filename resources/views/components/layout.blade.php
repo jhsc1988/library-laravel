@@ -23,7 +23,7 @@
     <title>Knjižnica - laravel</title>
 </head>
 <body class="m-width-500">
-<nav class="flex items-center justify-between flex-wrap p-2 bg-nav">
+<nav class="flex items-center justify-between flex-wrap p-2 b-shadow bg-nav">
     <div class="flex items-center flex-shrink-0  mr-6 nav">
         <a class="text-lg font-bold nav" href="/">Knjižnica</a>
     </div>
@@ -50,9 +50,8 @@
         </div>
         <div class="nav">
             @auth
-                <span class="font-bold">
-                Pozdrav {{auth()->user()->name}} <?php if (auth()->user()->isAdmin()) echo('(Admin)') ?>
-            </span>
+                <span class="font-bold"> Pozdrav {{ auth()->user()->name }}<?php if (auth()->user()->isAdmin()) echo '<span style="color: rgba(239, 68, 68, 1);"> (Admin)</span>'; ?></span>
+
                 <a href="/listings/manage" class="hover:text-laravel"><i class="fa fa-gear fa-spin"></i> Sve posudbe</a>
                 <form class="inline" method="post" action="/logout">
                     @csrf
@@ -74,14 +73,11 @@
         </div>
     </div>
 </nav>
-
-<div class="module-border-wrap-nav"></div>
 <main>
     {{$slot}}
 </main>
 
-<footer class="footer bg-nav">
-    <div class="module-border-wrap-nav"></div>
+<footer class="footer bg-nav f-shadow">
     <div class="copyright">
         © 2023 Jasmin Husić
     </div>
