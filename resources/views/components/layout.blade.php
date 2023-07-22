@@ -41,8 +41,8 @@
             <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
                 Katalog
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Menu 1
+            <a href="/listings/create" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Listings Create
             </a>
             <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0">
                 Menu 2
