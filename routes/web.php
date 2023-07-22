@@ -41,7 +41,7 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Show Create Form
-Route::get('/listings/create', [ListingController::class, 'create'])->middleware(\App\Http\Middleware\AdminOnly::class);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware(['auth','admin']);
 
 // Single Listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
