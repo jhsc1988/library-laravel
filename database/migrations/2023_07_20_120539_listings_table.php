@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('publisher');
             $table->string('language');
             $table->text('annotation');
-            $table->string('ISBN');
+            $table->string('isbn');
             $table->string('cover')->nullable();
             $table->integer('amount');
             $table->timestamps();
