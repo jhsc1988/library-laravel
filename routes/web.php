@@ -51,10 +51,10 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
 //// Show Edit Form
-//Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware(['auth','admin']);
 //
 //// Update Listing
-//Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware(['auth','admin']);
 //
 //// Delete Listing
-//Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware(['auth','admin']);
