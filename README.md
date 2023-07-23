@@ -4,7 +4,7 @@ Jednostavni projekt koji je napravljen za vježbu i seminarski rad iz kolegija _
 
 Zamišljen je kao knjižnica sa značajkom rezervacije.
 
-![Screenshot from 2023-07-23 20-15-22.png](..%2F..%2F..%2Fhome%2Fkungf00%2FDownloads%2FScreenshot%20from%202023-07-23%2020-15-22.png)
-![Screenshot from 2023-07-23 20-15-40.png](..%2F..%2F..%2Fhome%2Fkungf00%2FDownloads%2FScreenshot%20from%202023-07-23%2020-15-40.png)
-![Screenshot from 2023-07-23 20-16-18.png](..%2F..%2F..%2Fhome%2Fkungf00%2FDownloads%2FScreenshot%20from%202023-07-23%2020-16-18.png)
-![Screenshot from 2023-07-23 20-16-31.png](..%2F..%2F..%2Fhome%2Fkungf00%2FDownloads%2FScreenshot%20from%202023-07-23%2020-16-31.png)
+![Screenshot from 2023-07-23 20-15-22.png](resources%2Fscreenshots%2FScreenshot%20from%202023-07-23%2020-15-22.png)
+![Screenshot from 2023-07-23 20-15-40.png](resources%2Fscreenshots%2FScreenshot%20from%202023-07-23%2020-15-40.png)
+![Screenshot from 2023-07-23 20-16-18.png](resources%2Fscreenshots%2FScreenshot%20from%202023-07-23%2020-16-18.png)
+![Screenshot from 2023-07-23 20-16-31.png](resources%2Fscreenshots%2FScreenshot%20from%202023-07-23%2020-16-31.png)
