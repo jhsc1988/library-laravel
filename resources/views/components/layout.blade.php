@@ -23,7 +23,7 @@
     <title>Knjižnica - laravel</title>
 </head>
 <body class="m-width-500">
-<nav class="flex items-center justify-between flex-wrap p-2 b-shadow bg-nav">
+<nav class="flex items-center justify-between flex-wrap p-2 b-shadow bg-nav fixed top-0 left-0 right-0 z-20">
     <div class="flex items-center flex-shrink-0  mr-6 nav">
         <a class="text-lg font-bold nav" href="/">Knjižnica</a>
     </div>
@@ -38,19 +38,16 @@
     </div>
     <div id="menu" class="w-full hidden flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-sm lg:flex-grow nav">
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Katalog
-            </a>
-            <a href="/listings/create" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Listings Create
-            </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0">
-                Menu 2
-            </a>
+            @php
+                if (auth()->check() && auth()->user()->isAdmin()) {
+                echo '<a href="/listings/create" class="block mt-4 lg:inline-block lg:mt-0 mr-4" style="color: red;">Upis nove knjige</a>';
+                }
+            @endphp
         </div>
         <div class="nav">
             @auth
-                <span class="font-bold"> Pozdrav {{ auth()->user()->name }}<?php if (auth()->user()->isAdmin()) echo '<span style="color: rgba(239, 68, 68, 1);"> (Admin)</span>'; ?></span>
+                <span
+                    class="font-bold"> Pozdrav {{ auth()->user()->name }}<?php if (auth()->user()->isAdmin()) echo '<span style="color: rgba(239, 68, 68, 1);"> (Admin)</span>'; ?></span>
 
                 <a href="/listings/manage" class="hover:text-laravel"><i class="fa fa-gear fa-spin"></i> Sve posudbe</a>
                 <form class="inline" method="post" action="/logout">
@@ -73,7 +70,7 @@
         </div>
     </div>
 </nav>
-<main>
+<main class="pb-8">
     {{$slot}}
 </main>
 
@@ -81,7 +78,8 @@
     <div class="copyright">
         © 2023 Jasmin Husić
     </div>
-</footer><x-flash-message/>
+</footer>
+<x-flash-message/>
 <div class="m-bottom-80"></div>
 
 </body>
