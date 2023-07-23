@@ -1,5 +1,5 @@
 <x-layout>
-    <x-card class="p-10 max-w-lg mx-auto mt-16">
+    <x-card class="p-10 max-w-lg mx-auto mt-24 pt-10">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Prijava
