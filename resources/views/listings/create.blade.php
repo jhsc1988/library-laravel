@@ -81,8 +81,7 @@
                         class="border border-gray-200 rounded p-2 w-full"
                         name="annotation"
                         rows="10"
-                        {{old('annotation')}}
-                    ></textarea>
+                        placeholder>{{old('annotation')}}</textarea>
                 </label>
 
                 @error('annotation')
