@@ -32,7 +32,7 @@ class UserController extends Controller
         // Login
         auth()->login($user);
 
-        return redirect('/')->with('message','User created and logged in');
+        return redirect('/')->with('message','Korisnik je kreiran!');
     }
 
     // Show Login Form
@@ -44,7 +44,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('message', 'You have been logged out!');
+        return redirect('/')->with('message', 'Uspješno ste odjavljeni!');
     }
 
     // Authenticate User
@@ -56,16 +56,16 @@ class UserController extends Controller
 
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'You are now logged in');
+            return redirect('/')->with('message', 'Uspješno ste prijavljeni!');
         }
 
         $user = User::where('email', $formFields['email'])->first();
         if (!$user) {
-            return back()->withErrors(['email'=> 'Invalid Credentials'])->onlyInput('email');
+            return back()->withErrors(['email'=> 'Nevažeće vjerodajnice'])->onlyInput('email');
         }
 
         if (!Hash::check($formFields['password'], $user->getAuthPassword())) {
-            return back()->withErrors(['password'=> 'Invalid Password'])->onlyInput('password');
+            return back()->withErrors(['password'=> 'Pogrešna lozinka!'])->onlyInput('password');
         }
 
         return abort(500, 'An internal server error occurred. Please try again later.');
