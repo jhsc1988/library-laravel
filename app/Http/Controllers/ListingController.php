@@ -12,7 +12,7 @@ class ListingController extends Controller
     public function index()
     {
         return view('listings.index', [
-            'listings' => Listing::latest()->paginate(6)
+            'listings' => Listing::latest()->filter(request(['search']))->paginate(6)
 
         ]);
     }
@@ -72,14 +72,14 @@ class ListingController extends Controller
         }
 
         $formFields = $request->validate([
-            'title' => ['required', Rule::unique('listings', 'title')],
+            'title' => 'required',
             'author' => 'required',
             'publisher' => 'required',
             'language' => 'required',
             'annotation' => 'required',
             'isbn' => 'required',
             'amount' => 'required',
-            'cover' => 'required',
+//            'cover' => 'required',
         ]);
 
         if ($request->hasFile('cover')) {
