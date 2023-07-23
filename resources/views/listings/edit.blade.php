@@ -1,5 +1,5 @@
 <x-layout>
-    <x-card class="p-10 mr-96 ml-96 mx-auto mt-24">
+    <x-card class="p-10 max-w-2xl mx-auto mt-24">
         <div class="text-sm text-left pb-8">
             <a href="/" class="ext-black "><i class="fa-solid fa-arrow-left"></i> Povratak</a>
 
@@ -82,8 +82,7 @@
                         class="border border-gray-200 rounded p-2 w-full"
                         name="annotation"
                         rows="10"
-                        placeholder>{{$listing->annotation}}
-                    </textarea>
+                        placeholder>{{$listing->annotation}}</textarea>
                 </label>
 
                 @error('annotation')
@@ -141,7 +140,6 @@
                          src="{{ $cover }}" alt="Listing Cover"
                     >
                 </div>
-
 
                 @error('cover')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
