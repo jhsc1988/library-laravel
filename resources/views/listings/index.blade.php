@@ -6,7 +6,7 @@
                 <x-listing-card :listing="$listing"/>
             @endforeach
         @else
-            <p>No listings found</p>
+            <p>Ništa nije pronađeno</p>
         @endunless
     </div>
     <div class="mt-6 p-4">
