@@ -20,8 +20,12 @@ class ListingController extends Controller
     // Single Listing
     public function show(Listing $listing)
     {
+        $reservationsCount = $listing->reservations()->count();
+        $availableAmount = max(0, $listing->amount - $reservationsCount);
+
         return view('listings.show', [
-            'listing' => $listing
+            'listing' => $listing,
+            'availableAmount' => $availableAmount,
         ]);
     }
 
@@ -54,7 +58,7 @@ class ListingController extends Controller
 
         Listing::create($formFields);
 
-        return redirect('/')->with('message', 'listing created successfully!');
+        return redirect('/')->with('message', 'Knjiga je kreirana!');
     }
 
     //Show Edit Form
@@ -66,7 +70,6 @@ class ListingController extends Controller
     // Update Listing Data
     public function update(Request $request, Listing $listing)
     {
-        // Make sure logged in user is owner
         if (auth()->user()->role !== 'admin') {
             abort(403, 'Unauthorized Action');
         }
@@ -79,7 +82,6 @@ class ListingController extends Controller
             'annotation' => 'required',
             'isbn' => 'required',
             'amount' => 'required',
-//            'cover' => 'required',
         ]);
 
         if ($request->hasFile('cover')) {
@@ -88,18 +90,17 @@ class ListingController extends Controller
 
         $listing->update($formFields);
 
-        return back()->with('message', 'Listing updated successfully!');
+        return back()->with('message', 'Knjiga je promijenjena!');
     }
 
     // Delete Listing
     public function destroy(Listing $listing)
     {
-        // Make sure logged in user is owner
         if (auth()->user()->role !== 'admin') {
             abort(403, 'Unauthorized Action');
         }
 
         $listing->delete();
-        return redirect('/')->with('message', 'Listing deleted successfully');
+        return redirect('/')->with('message', 'Knjiga je obrisana!');
     }
 }
