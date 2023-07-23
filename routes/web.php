@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +37,8 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 // Show Login Form
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
+/////////////////////////////////////////////// listings
+
 // Log In User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
@@ -44,8 +46,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware(['auth','admin']);
 
 // Single Listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
-
+Route::get('/listings/{listing}', [ListingController::class, 'show'])->name('listings.show');
 
 // Store Listing Data
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
@@ -58,3 +59,17 @@ Route::put('/listings/{listing}', [ListingController::class, 'update'])->middlew
 //
 //// Delete Listing
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware(['auth','admin']);
+
+/////////////////////////////////////////////// reservations
+
+// Reserve Book
+Route::post('/reserve/{listing}', [ReservationController::class, 'reserve'])->name('reserve')->middleware('auth');
+
+// Get All Reservations
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index')->middleware(['auth','admin']);
+
+// Get My Reservations
+Route::get('/my-reservations', [ReservationController::class, 'myReservations'])->name('my-reservations')->middleware('auth');
+
+// Delete Reservation
+Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy')->middleware('auth');
