@@ -1,5 +1,5 @@
 <form action="/">
-    <div class="relative m-4 rounded-lg mt-20 mr-80 ml-80 b-shadow">
+    <div class="z-10 relative m-4 rounded-lg mt-20 mr-80 ml-80 b-shadow">
         <div class="absolute top-4 left-3">
             <i class="fa fa-search text-gray-400 hover:text-gray-500"></i>
         </div>

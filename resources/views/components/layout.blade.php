@@ -37,10 +37,25 @@
         </button>
     </div>
     <div id="menu" class="w-full hidden flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow nav">
+        <div class="text-sm nav">
+            @php
+                if (auth()->check()) {
+                echo '<a href="/my-reservations" class="block mt-4 lg:inline-block lg:mt-0 mr-4">Moje rezervacije</a>';
+                }
+            @endphp
+        </div>
+        <div class="text-sm nav">
             @php
                 if (auth()->check() && auth()->user()->isAdmin()) {
                 echo '<a href="/listings/create" class="block mt-4 lg:inline-block lg:mt-0 mr-4" style="color: red;">Upis nove knjige</a>';
+                }
+            @endphp
+        </div>
+
+        <div class="text-sm lg:flex-grow nav">
+            @php
+                if (auth()->check() && auth()->user()->isAdmin()) {
+                echo '<a href="/reservations" class="block mt-4 lg:inline-block lg:mt-0 mr-4" style="color: red;">Sve rezervacije</a>';
                 }
             @endphp
         </div>
@@ -49,7 +64,6 @@
                 <span
                     class="font-bold"> Pozdrav {{ auth()->user()->name }}<?php if (auth()->user()->isAdmin()) echo '<span style="color: rgba(239, 68, 68, 1);"> (Admin)</span>'; ?></span>
 
-                <a href="/listings/manage" class="hover:text-laravel"><i class="fa fa-gear fa-spin"></i> Sve posudbe</a>
                 <form class="inline" method="post" action="/logout">
                     @csrf
                     <button type="submit" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
