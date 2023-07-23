@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Listing extends Model
 {
@@ -27,5 +28,19 @@ class Listing extends Model
                 ->orWhere('author', 'like', '%' . request('search') . '%')
                 ->orWhere('annotation', 'like', '%' . request('search') . '%');
         }
+    }
+
+    public function reservations()
+    {
+        return $this->belongsToMany(User::class, 'reservations')->withTimestamps();
+    }
+    public function isReservedByCurrentUser()
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return false; // If the user is not authenticated, return false
+        }
+
+        return $this->reservations()->where('user_id', $user->id)->exists();
     }
 }
