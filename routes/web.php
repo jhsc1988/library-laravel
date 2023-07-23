@@ -37,10 +37,10 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 // Show Login Form
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
-/////////////////////////////////////////////// listings
-
 // Log In User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+/////////////////////////////////////////////// listings
 
 // Show Create Form
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware(['auth','admin']);
